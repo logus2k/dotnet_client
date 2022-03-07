@@ -99,11 +99,12 @@ namespace TECH5.IDencode.Client
 
                 requestContent.Add(pipelineData_content);
 
-
                 
                 // Write the raw request to a file
+                /*
                 string requestContentFilePath = Path.Combine(Environment.CurrentDirectory, "raw_request.txt");
                 await Dumper.DumpRequest(requestContent, requestContentFilePath);
+                */
 
                 
                 client.BaseAddress = new Uri(configurationProperties["idencodeBaseUrl"]);                
