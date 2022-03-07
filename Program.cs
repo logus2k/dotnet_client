@@ -12,23 +12,28 @@ namespace TECH5.IDencode.Client
         {
             int errorCode = await Enroll();
         
-            Console.WriteLine("errorCode: " + errorCode.ToString());
+            if (errorCode != 0)
+            {
+                Console.WriteLine("ErrorCode: " + errorCode.ToString());
+            }
         }
 
         static async Task<int> Enroll()
         {
             int errorCode = -1;
-            
-            Dictionary<string,string> configurationProperties = await LoadConfigurationProperties();
+
+            Dictionary<string, string> configurationProperties = await LoadConfigurationProperties();
             
             try 
             {
                 using var client = new HttpClient();
+                var requestContent = new MultipartFormDataContent();
+
+
+                // Add face image data part
                 using var faceImageStream = File.OpenRead(configurationProperties["faceImagePath"]);
-
-                var content = new MultipartFormDataContent();
-
                 var file_content = new ByteArrayContent(new StreamContent(faceImageStream).ReadAsByteArrayAsync().Result);
+                faceImageStream.Close();
 
                 file_content.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
                 file_content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -37,11 +42,10 @@ namespace TECH5.IDencode.Client
                     Name = "face_image",
                 };
 
-                content.Add(file_content);
-                faceImageStream.Close();
+                requestContent.Add(file_content);
 
 
-
+                // Add demographics data part
                 bool includeDemographics = false;
 
                 if (configurationProperties["includeDemographics"] != null && configurationProperties["includeDemographics"].Equals("true", StringComparison.InvariantCultureIgnoreCase))
@@ -53,6 +57,7 @@ namespace TECH5.IDencode.Client
                 {
                     using var demographicDataStream = File.OpenRead(configurationProperties["demographicsFilePath"]);
                     var demographicData_content = new ByteArrayContent(new StreamContent(demographicDataStream).ReadAsByteArrayAsync().Result);
+                    demographicDataStream.Close();
 
                     demographicData_content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                     demographicData_content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -61,18 +66,25 @@ namespace TECH5.IDencode.Client
                         Name = "demog",
                     };
 
-                    content.Add(demographicData_content);
-                    demographicDataStream.Close();
+                    requestContent.Add(demographicData_content);
                 }
 
 
-
-                Pipeline pipeline = new(configurationProperties);
+                // Add pipeline data part
                 using var pipelineDataStream = new MemoryStream();
-                await JsonSerializer.SerializeAsync(pipelineDataStream, pipeline, pipeline.GetType());
+                await JsonSerializer.SerializeAsync(
+                    pipelineDataStream, 
+                    new Pipeline(configurationProperties), 
+                    typeof(Pipeline), 
+                    new JsonSerializerOptions()
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                    }, 
+                    new CancellationToken());
 
                 pipelineDataStream.Position = 0;
                 var pipelineData_content = new ByteArrayContent(new StreamContent(pipelineDataStream).ReadAsByteArrayAsync().Result);
+                pipelineDataStream.Close();
                 
                 pipelineData_content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 pipelineData_content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -81,8 +93,7 @@ namespace TECH5.IDencode.Client
                     Name = "pipeline",
                 };
 
-                content.Add(pipelineData_content);
-                pipelineDataStream.Close();
+                requestContent.Add(pipelineData_content);
 
 
 
@@ -90,10 +101,10 @@ namespace TECH5.IDencode.Client
 
 
                 string requestContentFilePath = @"C:\TECH5\Products\IDencode\REST_API\dotnet_client\raw_request.txt";
-                await Dumper.DumpRequest(content, requestContentFilePath);
+                await Dumper.DumpRequest(requestContent, requestContentFilePath);
 
                 
-                var response = await client.PostAsync("enroll", content);
+                var response = await client.PostAsync("enroll", requestContent);
 
                 HttpResponseMessage responseMessage = response.EnsureSuccessStatusCode();
 
@@ -125,7 +136,7 @@ namespace TECH5.IDencode.Client
             return errorCode;
         }
 
-        static async Task<Dictionary<string,string>> LoadConfigurationProperties()
+        static async Task<Dictionary<string, string>> LoadConfigurationProperties()
         {
             string propertiesFileName = string.Concat(AppDomain.CurrentDomain.FriendlyName, ".properties");
             string propertiesFilePath = Path.Combine(Environment.CurrentDirectory, propertiesFileName);

@@ -5,42 +5,46 @@ namespace TECH5.IDencode.Client
 {
     public class Pipeline
     {
-        public FacePipeline facePipeline { get; set; }
-        public BarcodeGenerationParameters barcodeGenerationParameters { get; set; }
-        public EmailSender emailSender{ get; set; }
+        public FacePipeline FacePipeline { get; set; }
+        public BarcodeGenerationParameters BarcodeGenerationParameters { get; set; }
+        public EmailSender EmailSender{ get; set; }
 
-        public Pipeline(Dictionary<string,string> configurationProperties)
+        public Pipeline(Dictionary<string, string> configurationProperties)
         {
-            facePipeline = new();
-            barcodeGenerationParameters = new();
-            emailSender = new();
+            FacePipeline = new();
+            BarcodeGenerationParameters = new();
+            EmailSender = new();
 
-            facePipeline.faceDetectorConfidence = 0.6;
-            facePipeline.faceSelectorAlg = 1;
+            FacePipeline.FaceDetectorConfidence = 0.6;
+            FacePipeline.FaceSelectorAlg = 1;
             
             if (configurationProperties["includeFaceTemplate"] != null && configurationProperties["includeFaceTemplate"].Equals("true", StringComparison.InvariantCultureIgnoreCase))
             {
-                facePipeline.performTemplateExtraction = true;
+                FacePipeline.PerformTemplateExtraction = true;
             }
             else
             {
-                facePipeline.performTemplateExtraction = false;
+                FacePipeline.PerformTemplateExtraction = false;
             }
 
             if (configurationProperties["includeCompressedImage"] != null && configurationProperties["includeCompressedImage"].Equals("true", StringComparison.InvariantCultureIgnoreCase))
             {
-                facePipeline.performCompression = true;
+                FacePipeline.PerformCompression = true;
             }
             else
             {
-                facePipeline.performCompression = false;
+                FacePipeline.PerformCompression = false;
             }
 
             if (configurationProperties["compressionLevel"] != null)
             {
                 if (Int32.TryParse(configurationProperties["compressionLevel"], out int compressionLevel))
                 {                  
-                    facePipeline.compressionLevel = compressionLevel;
+                    FacePipeline.CompressionLevel = compressionLevel;
+                }
+                else
+                {
+                    FacePipeline.CompressionLevel = 1;
                 }
             }                  
 
@@ -48,7 +52,11 @@ namespace TECH5.IDencode.Client
             {
                 if (Int32.TryParse(configurationProperties["cols"], out int blockCols))
                 {                  
-                    barcodeGenerationParameters.blockCols = blockCols;
+                    BarcodeGenerationParameters.BlockCols = blockCols;
+                }
+                else
+                {
+                    BarcodeGenerationParameters.BlockCols = 30;
                 }
             }
             
@@ -56,7 +64,11 @@ namespace TECH5.IDencode.Client
             {
                 if (Int32.TryParse(configurationProperties["rows"], out int blockRows))
                 {                  
-                    barcodeGenerationParameters.blockRows = blockRows;
+                    BarcodeGenerationParameters.BlockRows = blockRows;
+                }
+                else
+                {
+                    BarcodeGenerationParameters.BlockRows = 8;
                 }
             }
 
@@ -64,7 +76,11 @@ namespace TECH5.IDencode.Client
             {
                 if (Int32.TryParse(configurationProperties["errorCorrection"], out int errorCorrection))
                 {                  
-                    barcodeGenerationParameters.errorCorrection = errorCorrection;
+                    BarcodeGenerationParameters.ErrorCorrection = errorCorrection;
+                }
+                else
+                {
+                    BarcodeGenerationParameters.ErrorCorrection = 12;
                 }
             }
 
@@ -72,7 +88,11 @@ namespace TECH5.IDencode.Client
             {
                 if (Int32.TryParse(configurationProperties["gridSize"], out int gridSize))
                 {                  
-                    barcodeGenerationParameters.gridSize = gridSize;
+                    BarcodeGenerationParameters.GridSize = gridSize;
+                }
+                else
+                {
+                    BarcodeGenerationParameters.GridSize = 7;
                 }
             }
 
@@ -80,7 +100,11 @@ namespace TECH5.IDencode.Client
             {
                 if (Int32.TryParse(configurationProperties["thickness"], out int thickness))
                 {                  
-                    barcodeGenerationParameters.thickness = thickness;
+                    BarcodeGenerationParameters.Thickness = thickness;
+                }
+                else
+                {
+                    BarcodeGenerationParameters.Thickness = 2;
                 }
             }            
 
@@ -89,49 +113,49 @@ namespace TECH5.IDencode.Client
 
                 if (DateTime.TryParse(configurationProperties["expiryDate"], out DateTime expirationDate))
                 {
-                    barcodeGenerationParameters.expirationdate = expirationDate.ToString("yyyy-MM-ddT23:59:59Z");
+                    BarcodeGenerationParameters.Expirationdate = expirationDate.ToString("yyyy-MM-ddT23:59:59Z");
                 }
                 else
                 {
-                    barcodeGenerationParameters.expirationdate = DateTime.Now.AddYears(1).ToString("yyyy-MM-ddT23:59:59Z");
+                    BarcodeGenerationParameters.Expirationdate = DateTime.Now.AddYears(1).ToString("yyyy-MM-ddT23:59:59Z");
                 }
             }            
 
             if (configurationProperties["email"] != null)
             {
-                emailSender.emailto = configurationProperties["email"];
+                EmailSender.Emailto = configurationProperties["email"];
             }
             else
             {
-                throw new ApplicationException("Configuration property: \"email\" is missing a value");
+                throw new ApplicationException("Configuration property \"email\" is missing a required value");
             }
 
-            emailSender.subject = "Your Tech5 IDencode";
+            EmailSender.Subject = "Your Tech5 IDencode";
         }
     }
 
     public class FacePipeline
     {
-        public bool performTemplateExtraction { get; set; } // true
-        public double faceDetectorConfidence { get; set; } // 0.6;
-        public int faceSelectorAlg { get; set; } // 1;
-        public bool performCompression { get; set; } // true;
-        public int compressionLevel { get; set; } // 1;
+        public bool PerformTemplateExtraction { get; set; } 
+        public double FaceDetectorConfidence { get; set; }
+        public int FaceSelectorAlg { get; set; } 
+        public bool PerformCompression { get; set; }
+        public int CompressionLevel { get; set; }
     }
 
     public class BarcodeGenerationParameters
     {
-        public int blockCols { get; set; } // 30;
-        public int blockRows { get; set; } // 8;
-        public int errorCorrection { get; set; } // 12;
-        public int gridSize { get; set; } // 7;
-        public int thickness { get; set; } // 2;
-        public string? expirationdate { get; set; } // DateTime.Parse("2023-03-12T00:00:00Z");        
+        public int BlockCols { get; set; }
+        public int BlockRows { get; set; }
+        public int ErrorCorrection { get; set; }
+        public int GridSize { get; set; } 
+        public int Thickness { get; set; } 
+        public string? Expirationdate { get; set; }        
     }
 
     public class EmailSender
     {
-        public string? emailto { get; set; } // "someone_427387428784@gmail.com";
-        public string? subject { get; set; } // "Your Tech5 IDencode";        
+        public string? Emailto { get; set; }
+        public string? Subject { get; set; }     
     }    
 }
