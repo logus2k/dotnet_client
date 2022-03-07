@@ -7,10 +7,25 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "dotnet_client/1.0.0": {
+        "dependencies": {
+          "Microsoft.Maui.Graphics": "6.0.200-preview.13.935"
+        },
         "runtime": {
           "dotnet_client.dll": {}
         }
-      }
+      },
+      "Microsoft.Maui.Graphics/6.0.200-preview.13.935": {
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Graphics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "6.0.200.78"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {}
     }
   },
   "libraries": {
@@ -18,6 +33,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.Maui.Graphics/6.0.200-preview.13.935": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rSiV/TBAX3puzIl6+z+/slqzwBbZK6+wCtALjEXolCWPznkJG16Fy5UlH1J+fSDfKt7PqCElBZGtERr16liBsg==",
+      "path": "microsoft.maui.graphics/6.0.200-preview.13.935",
+      "hashPath": "microsoft.maui.graphics.6.0.200-preview.13.935.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
     }
   }
 }

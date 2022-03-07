@@ -3,11 +3,13 @@ C:\TECH5\Products\IDencode\REST_API\dotnet_client\bin\Debug\net6.0\dotnet_client
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\bin\Debug\net6.0\dotnet_client.runtimeconfig.json
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\bin\Debug\net6.0\dotnet_client.dll
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\bin\Debug\net6.0\dotnet_client.pdb
+C:\TECH5\Products\IDencode\REST_API\dotnet_client\bin\Debug\net6.0\Microsoft.Maui.Graphics.dll
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.csproj.AssemblyReference.cache
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.GeneratedMSBuildEditorConfig.editorconfig
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.AssemblyInfoInputs.cache
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.AssemblyInfo.cs
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.csproj.CoreCompileInputs.cache
+C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.csproj.CopyComplete
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.dll
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\refint\dotnet_client.dll
 C:\TECH5\Products\IDencode\REST_API\dotnet_client\obj\Debug\net6.0\dotnet_client.pdb

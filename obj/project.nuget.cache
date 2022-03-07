@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "WjIiDJgh8wnhl3ESO6Vh9Vst3FxYuRLYivtkbPEv9k6oV8NQWGMYg4W1Hd/iFpzItb3f8CdP87ibRjmX2E5FKQ==",
+  "dgSpecHash": "hSOrFLciRYSUb9jQ9+coa6QyWn9Uom/dKNqyid+NxJm5db5s/H410MyTFgmanpeoQFaUSOCHsDBNMl7IATJ2bw==",
   "success": true,
   "projectFilePath": "C:\\TECH5\\Products\\IDencode\\REST_API\\dotnet_client\\dotnet_client.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\logus\\.nuget\\packages\\microsoft.maui.graphics\\6.0.200-preview.13.935\\microsoft.maui.graphics.6.0.200-preview.13.935.nupkg.sha512",
+    "C:\\Users\\logus\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

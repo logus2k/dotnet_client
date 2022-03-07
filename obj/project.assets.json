@@ -1,11 +1,116 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Microsoft.Maui.Graphics/6.0.200-preview.13.935": {
+        "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Graphics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Graphics.dll": {}
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Microsoft.Maui.Graphics/6.0.200-preview.13.935": {
+      "sha512": "rSiV/TBAX3puzIl6+z+/slqzwBbZK6+wCtALjEXolCWPznkJG16Fy5UlH1J+fSDfKt7PqCElBZGtERr16liBsg==",
+      "type": "package",
+      "path": "microsoft.maui.graphics/6.0.200-preview.13.935",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid10.0/Microsoft.Maui.Graphics.dll",
+        "lib/monoandroid10.0/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-android30.0/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-android30.0/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-tizen6.5/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-tizen6.5/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.pdb",
+        "lib/netstandard2.0/Microsoft.Maui.Graphics.dll",
+        "lib/netstandard2.0/Microsoft.Maui.Graphics.pdb",
+        "lib/netstandard2.1/Microsoft.Maui.Graphics.dll",
+        "lib/netstandard2.1/Microsoft.Maui.Graphics.pdb",
+        "lib/tizen40/Microsoft.Maui.Graphics.dll",
+        "lib/tizen40/Microsoft.Maui.Graphics.pdb",
+        "lib/xamarin.ios10/Microsoft.Maui.Graphics.dll",
+        "lib/xamarin.ios10/Microsoft.Maui.Graphics.pdb",
+        "lib/xamarin.mac20/Microsoft.Maui.Graphics.dll",
+        "lib/xamarin.mac20/Microsoft.Maui.Graphics.pdb",
+        "microsoft.maui.graphics.6.0.200-preview.13.935.nupkg.sha512",
+        "microsoft.maui.graphics.nuspec"
+      ]
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Microsoft.Maui.Graphics >= 6.0.200-preview.13.935"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\logus\\.nuget\\packages\\": {}
@@ -45,6 +150,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "Microsoft.Maui.Graphics": {
+            "target": "Package",
+            "version": "[6.0.200-preview.13.935, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

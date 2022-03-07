@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Maui.Graphics": {
+              "target": "Package",
+              "version": "[6.0.200-preview.13.935, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
