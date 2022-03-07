@@ -83,6 +83,10 @@ namespace TECH5.IDencode.Client
                     new CancellationToken());
 
                 pipelineDataStream.Position = 0;
+                var reader = new StreamReader(pipelineDataStream);
+                string pipelineJsonText = reader.ReadToEnd();
+
+                pipelineDataStream.Position = 0;
                 var pipelineData_content = new ByteArrayContent(new StreamContent(pipelineDataStream).ReadAsByteArrayAsync().Result);
                 pipelineDataStream.Close();
                 
@@ -96,14 +100,13 @@ namespace TECH5.IDencode.Client
                 requestContent.Add(pipelineData_content);
 
 
-
-                client.BaseAddress = new Uri(configurationProperties["idencodeBaseUrl"]);
-
-
-                string requestContentFilePath = @"C:\TECH5\Products\IDencode\REST_API\dotnet_client\raw_request.txt";
+                
+                // Write the raw request to a file
+                string requestContentFilePath = Path.Combine(Environment.CurrentDirectory, "raw_request.txt");
                 await Dumper.DumpRequest(requestContent, requestContentFilePath);
 
                 
+                client.BaseAddress = new Uri(configurationProperties["idencodeBaseUrl"]);                
                 var response = await client.PostAsync("enroll", requestContent);
 
                 HttpResponseMessage responseMessage = response.EnsureSuccessStatusCode();
@@ -127,6 +130,12 @@ namespace TECH5.IDencode.Client
                 string outputFilesPath = Path.Combine(configurationProperties["outputFilesPath"], uuid);
 
                 errorCode = await Base64ToImage(base64EncodedCryptograph, outputFilesPath);
+
+                if (errorCode == 0)
+                {
+                    await File.WriteAllTextAsync(Path.Combine(outputFilesPath, "pipeline.json"), pipelineJsonText);
+                    await File.WriteAllTextAsync(Path.Combine(outputFilesPath, "response.json"), jsonDocument.RootElement.ToString());
+                }
             }
             catch (Exception ex)
             {
