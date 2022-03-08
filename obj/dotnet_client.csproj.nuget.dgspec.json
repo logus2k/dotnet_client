@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TECH5\\Products\\IDencode\\REST_API\\dotnet_client\\dotnet_client.csproj": {}
+    "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj": {}
   },
   "projects": {
-    "C:\\TECH5\\Products\\IDencode\\REST_API\\dotnet_client\\dotnet_client.csproj": {
+    "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TECH5\\Products\\IDencode\\REST_API\\dotnet_client\\dotnet_client.csproj",
+        "projectUniqueName": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj",
         "projectName": "dotnet_client",
-        "projectPath": "C:\\TECH5\\Products\\IDencode\\REST_API\\dotnet_client\\dotnet_client.csproj",
-        "packagesPath": "C:\\Users\\logus\\.nuget\\packages\\",
-        "outputPath": "C:\\TECH5\\Products\\IDencode\\REST_API\\dotnet_client\\obj\\",
+        "projectPath": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj",
+        "packagesPath": "/home/logus/.nuget/packages/",
+        "outputPath": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\logus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/logus/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
         }
       }
     }
