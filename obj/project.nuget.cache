@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vjTN4dvxC3XYtOHWAs728WYr1IpGUwBcza7ffSE/+HfJB+XtDd5Oqvnn0l4khvm7KxfPzm20IRWxV/NHYjXLnQ==",
+  "dgSpecHash": "H5RTHIcMQ8KOnc4J39j2bhKsL9oVKcyJVXiZa2P/a1C1WlZ9frpXW7j3LslxZFnKSoO2CMRW0bD5Od0MZuATQQ==",
   "success": true,
-  "projectFilePath": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj",
+  "projectFilePath": "/home/logus/dev/tech5/idencode/dotnet_client/dotnet_client.csproj",
   "expectedPackageFiles": [
     "/home/logus/.nuget/packages/microsoft.maui.graphics/6.0.200-preview.13.935/microsoft.maui.graphics.6.0.200-preview.13.935.nupkg.sha512",
     "/home/logus/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"

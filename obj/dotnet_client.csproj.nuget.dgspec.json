@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj": {}
+    "/home/logus/dev/tech5/idencode/dotnet_client/dotnet_client.csproj": {}
   },
   "projects": {
-    "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj": {
+    "/home/logus/dev/tech5/idencode/dotnet_client/dotnet_client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj",
+        "projectUniqueName": "/home/logus/dev/tech5/idencode/dotnet_client/dotnet_client.csproj",
         "projectName": "dotnet_client",
-        "projectPath": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/dotnet_client.csproj",
+        "projectPath": "/home/logus/dev/tech5/idencode/dotnet_client/dotnet_client.csproj",
         "packagesPath": "/home/logus/.nuget/packages/",
-        "outputPath": "/mnt/c/TECH5/Products/IDencode/REST_API/dotnet_client/obj/",
+        "outputPath": "/home/logus/dev/tech5/idencode/dotnet_client/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/logus/.nuget/NuGet/NuGet.Config"

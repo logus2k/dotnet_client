@@ -4,23 +4,28 @@ using System.Text.Json;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Graphics.Platform;
 
+
 namespace TECH5.IDencode.Client
 {
-    class Program
+    public class Program
     {        
         static async Task Main()
         {
-            int errorCode = await Enroll();
+            EnrollResult enrollResult = await Enroll();
         
-            if (errorCode != 0)
+            if (enrollResult.ErrorCode != 0)
             {
-                Console.WriteLine("ErrorCode: " + errorCode.ToString());
+                Console.WriteLine("Error code: " + enrollResult.ErrorCode.ToString());
             }
+            else
+            {
+                Console.WriteLine(enrollResult.Guid);
+            } 
         }
 
-        static async Task<int> Enroll()
+        static async Task<EnrollResult> Enroll()
         {
-            int errorCode = -1;
+            EnrollResult enrollResult = new(-1, string.Empty);
 
             Dictionary<string, string> configurationProperties = await LoadConfigurationProperties();
             
@@ -121,18 +126,18 @@ namespace TECH5.IDencode.Client
                     throw new ApplicationException("Cryptograph image is null or empty");
                 }
 
-                string? uuid = jsonDocument.RootElement.GetProperty("uuid").GetString();
+                enrollResult.Guid = jsonDocument.RootElement.GetProperty("uuid").GetString();
 
-                if (string.IsNullOrEmpty(uuid))
+                if (string.IsNullOrEmpty(enrollResult.Guid))
                 {
                     throw new ApplicationException("uuid is null or empty");
-                }              
+                }            
 
-                string outputFilesPath = Path.Combine(configurationProperties["outputFilesPath"], uuid);
+                string outputFilesPath = Path.Combine(configurationProperties["outputFilesPath"], enrollResult.Guid);
 
-                errorCode = await Base64ToImage(base64EncodedCryptograph, outputFilesPath);
+                enrollResult.ErrorCode = await Base64ToImage(base64EncodedCryptograph, outputFilesPath);
 
-                if (errorCode == 0)
+                if (enrollResult.ErrorCode == 0)
                 {
                     await File.WriteAllTextAsync(Path.Combine(outputFilesPath, "pipeline.json"), pipelineJsonText);
                     await File.WriteAllTextAsync(Path.Combine(outputFilesPath, "response.json"), jsonDocument.RootElement.ToString());
@@ -143,7 +148,7 @@ namespace TECH5.IDencode.Client
                 Console.WriteLine(ex.Message);
             }
 
-            return errorCode;
+            return enrollResult;
         }
 
         static async Task<Dictionary<string, string>> LoadConfigurationProperties()
@@ -188,6 +193,18 @@ namespace TECH5.IDencode.Client
             }
 
             return errorCode;
+        }
+    }
+
+    internal class EnrollResult
+    {
+        internal int ErrorCode {get; set;}
+        internal string? Guid {get; set;}
+
+        internal EnrollResult(int errorCode, string guid)
+        {
+            ErrorCode = errorCode;
+            Guid = guid;
         }
     }
 }
