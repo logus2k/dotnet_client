@@ -1,1 +1,0 @@
-{"facePipeline":{"performTemplateExtraction":true,"faceDetectorConfidence":0.6,"faceSelectorAlg":1,"performCompression":true,"compressionLevel":1},"barcodeGenerationParameters":{"blockCols":30,"blockRows":8,"errorCorrection":12,"gridSize":7,"thickness":2,"expirationdate":"2023-12-03T23:59:59Z"},"emailSender":{"emailto":"antonio.cruz@tech5-sa.com","subject":"Your Tech5 IDencode"}}
