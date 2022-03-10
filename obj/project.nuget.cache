@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H5RTHIcMQ8KOnc4J39j2bhKsL9oVKcyJVXiZa2P/a1C1WlZ9frpXW7j3LslxZFnKSoO2CMRW0bD5Od0MZuATQQ==",
+  "dgSpecHash": "vXo7cuDK1TgroiBgxPB5123xAHCfGeGTbx7QHMfGkorrCgaPaNTE7hnV8hWhBmgRXgQ8jTqOUjvZmBSIHOIQDg==",
   "success": true,
   "projectFilePath": "/home/logus/dev/tech5/idencode/dotnet_client/dotnet_client.csproj",
   "expectedPackageFiles": [
