@@ -1,6 +1,3 @@
-using System.Text.Json;
-
-
 namespace TECH5.IDencode.Client
 {
     public class Pipeline
